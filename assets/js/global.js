@@ -1,30 +1,41 @@
-// Returns all element descendants of node that match selectors ('[data-import])
+// Returns all element descendants of node that match selectors ([data-import]).
 // this returns an array like element that can be looped through
-const componentElement = document.querySelectorAll('[data-import]');
 
-// loop through this array like elements
-for(let element of componentElement){
-//    get the specific attributes that we stored the path to the component/module in
-    const file = element.getAttribute('data-import')
-    console.log(file)
+function renderComponents(elements){
 
-    fetch(file)
-        .then((res) =>{
-            return res.text()
-        })
-        .then((component) =>{
-            element.innerHTML = component;
-            loadComponentScripts(element)
-        })
-        .catch(()=>{
-            element.innerHTML = '<h4>Component not found</h4>'
-        })
+  // loop through this array like elements
+  for (let element of elements) {
+    // get the specific attributes that we stored the path to the component/module in
+    const dataImport = element.getAttribute("data-import");
     
+    fetch(dataImport)
+      .then((res) => {
+          if(!res.ok){
+              throw "Not found"
+          }
+        return res.text();
+      })
+      .then((component) => {
+        element.innerHTML = component;
+        loadComponentScripts(element)
+        const subComponents = element.querySelectorAll("[data-import]");
+        renderComponents(subComponents)
+      })
+      .catch(() => {
+        element.innerHTML = `<h4>Component not found</h4>`;
+      })
+      .finally(()=>{
+            lucide.createIcons();
+      })
+  }
 }
 
+const componentElements = document.querySelectorAll("[data-import]");
+renderComponents(componentElements)
+
 function loadComponentScripts(element){
-    const scripts = element.querySelectorAll('script');
-    for(let script of scripts){
+    const scripts = element.querySelectorAll("script");
+    for (let script of scripts) {
         const newScript = document.createElement('script');
         if(script.src){
             newScript.src = script.src;
@@ -32,10 +43,8 @@ function loadComponentScripts(element){
         if(script.textContent){
             newScript.textContent = script.textContent;
         }
-        
         script.remove()
-
-        document.body.appendChild(newScript)
-        console.log(script, 'script...')
+        
+        element.appendChild(newScript)
     }
 }

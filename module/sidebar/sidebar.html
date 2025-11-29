@@ -1,14 +1,56 @@
 <link rel="stylesheet" href="/module/sidebar/sidebar.css">
 
-<section class="beat99">
-    <h1>Beat99</h1>
+<section class="sidebar-area">
+    <a class="sidebar_menu_item" href="#_menu_home" id="_menu_home">
+         <i data-lucide="house"></i>
+        <span>Home</span>
+    </a>
+   
 
-<button id="sidebar">Click me</button>
+    <a class="sidebar_menu_item" href="#_menu_stream" id="_menu_stream">
+        <i data-lucide="biohazard"></i>
+        <span>Stream</span>
+    </a>
+    
+
+    <a class="sidebar_menu_item" href="#_menu_library" id="_menu_library">
+         <i data-lucide="tv-minimal-play"></i>
+        <span>Library</span>
+    </a>
+
+    <p class="sidebar_menu_item--heading">Recommended</p>
+    <a class="sidebar_menu_item" href="/#_menu_songs" id="_menu_songs">
+        <span>Songs</span>
+    </a>
+
+    <a class="sidebar_menu_item" href="/#_menu_artists" id="_menu_artists">
+        <span>Artists</span>
+    </a>
+
+    <a class="sidebar_menu_item" href="/#_menu_albums" id="_menu_albums">
+        <span>Albums</span>
+    </a>
+    
+
+    <a class="sidebar_menu_item" href="/#_menu_concerts" id="_menu_albums">
+        <span>Concerts</span>
+    </a>
+   
+    <p class="sidebar_menu_item--heading">Library</p>
+    <a class="sidebar_menu_item" href="#_menu_liked" id="_menu_liked">
+        <span>Liked</span>
+    </a>
+
+    <a class="sidebar_menu_item" href="#_menu_recentlyPlayed" id="_menu_recentlyPlayed">
+        <span>Recent played</span>
+    </a>
+
+    <a class="sidebar_menu_item" href="#_menu_playlist" id="_menu_playlist">
+        <span>My Playlists</span>
+    </a>
+
 </section>
-
 <script>
-    sidebar.addEventListener('click', ()=>{
-            alert('It is working')
-    })
-
+  lucide.createIcons();
 </script>
+<script src="/module/sidebar/sidebar.js"></script>

@@ -1,4 +1,7 @@
-.root{
+:root{
+    --padding-block: 1rem;  /*left and right padding*/
+}
+._root{
     box-sizing: border-box;
     width: 100%;
     height: 100vh;
@@ -6,16 +9,18 @@
     background-color: #ffd8a8;
 }
 
-.root__aside-bar{
-    width: 200px;
+._root__aside-bar{
+    width: 240px;
     height: 90vh;
-    background-color: #b2f2bb;
+    background-color: #1b2024;
+    margin: 0;
 }
 
-.root__footer{
+._root__footer{
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 80px;
     background-color: #a5d8ff;
+    padding: 0 var(--padding-block);
 }
