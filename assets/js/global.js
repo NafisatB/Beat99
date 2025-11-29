@@ -1,0 +1,1 @@
+const componentElement = document.querySelectorAll('[data-import]');
